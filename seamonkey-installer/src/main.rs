@@ -1,5 +1,4 @@
 use std::fs;
-use std::io::{self, Write};
 use std::process::Command;
 use tempfile::tempdir;
 
@@ -22,10 +21,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .arg("-si")
         .current_dir(&dir)
         .status()?;
-
-    // Delete the script itself
-    let script_path = std::env::current_exe()?;
-    fs::remove_file(script_path)?;
 
     Ok(())
 }
